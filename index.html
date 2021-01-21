@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Sentence generator</title>
+    </head>
+    <body>
+
+    <h1>Sentence generator</h1>
+    
+    <p>This is a random sentence generator. Enter nouns in the noun box. Then, enter verbs in the verb box. After you have entered nouns and verbs, click the "Form a sentence" button to generate a random sentence based on the nouns and verbs</p>
+
+
+    <p>Nouns:</p> <h2><div id="Noun"></div></h2>
+    <p>Verbs:</p> <h2><div id="Verb"></div></h2>
+    <p>Sentence:</p> <h1><div id="Sentence"></div></h1>
+
+
+    <form id="Noun-form">
+        <label>
+            Enter a noun:
+            <input type="text" name="noun">
+        </label>
+        <button type="submit">Give a noun</button>
+    </form>
+
+    <form id="Noun2-form">
+        <button type="submit">Remove a noun</button>
+    </form>
+
+    <form id="Verb-form">
+        <label>
+            Enter a verb:
+            <input type="text" name="verb">
+        </label>
+        <button type="submit">Give a verb</button>
+        
+    </form>
+
+    <form id="Verb2-form">
+        <button type="submit">Remove a verb</button>
+        
+    </form>
+    
+    <form id="Sentence-form">
+        <button type="submit">Form a sentence</button>
+        
+    </form>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+    var calcDonuts = function(years) {
+        return years * 3 * 365;
+    };
+    var nouns = ['cat', 'dog'];
+    var verbs = ['pushes', 'hugs'];
+    $("#Noun").text(nouns);
+    $("#Verb").text(verbs);
+    $("#Sentence").text(nouns[Math.floor(Math.random() * (nouns.length))] + " " + verbs[Math.floor(Math.random() * (verbs.length))] + " " + nouns[Math.floor(Math.random() * (nouns.length))]);
+
+
+    $("#Noun-form").on("submit", function(event) {
+        event.preventDefault();
+        
+        nouns.push($(this).find("[name = noun]").val());
+        
+        
+        $("#Noun").text(nouns);
+    });
+    $("#Noun2-form").on("submit", function(event) {
+        event.preventDefault();
+        
+        nouns.pop();
+        
+        
+        $("#Noun").text(nouns);
+    });
+
+
+
+    $("#Verb-form").on("submit", function(event) {
+        event.preventDefault();
+        
+        verbs.push($(this).find("[name = verb]").val());
+        
+        
+        $("#Verb").text(verbs);
+    });
+
+    $("#Verb2-form").on("submit", function(event) {
+        event.preventDefault();
+        
+        verbs.pop();
+        
+        
+        $("#Verb").text(verbs);
+    });
+    
+    $("#Sentence-form").on("submit", function(event) {
+        event.preventDefault();
+        
+        
+        
+        
+        $("#Sentence").text(nouns[Math.floor(Math.random() * (nouns.length))] + " " + verbs[Math.floor(Math.random() * (verbs.length))] + " " + nouns[Math.floor(Math.random() * (nouns.length))]);
+    });
+
+    //Credit to https://www.khanacademy.org/computing/computer-programming/html-js-jquery/form-processing-jquery/pc/challenge-donut-calculator
+    </script>
+    </body>
+</html>
